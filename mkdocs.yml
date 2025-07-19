@@ -50,6 +50,9 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.blocks.caption
 
+plugins:
+    - encryptcontent:
+        global_password: '0a03e293-f956-466d-9f70-ae265fc85b62'
+
 nav:
   - Home: index.md
-  
