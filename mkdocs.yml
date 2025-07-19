@@ -1,4 +1,5 @@
 site_name: GGVIE Apidata Documentation
+site_url: https://slapdat.github.io/ggvie-documentation/
 theme:
   name: material
   features:
