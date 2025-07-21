@@ -33,23 +33,21 @@ jobs:
       - name: Download and patch mkdocs-material
         run: |
           # Download the latest mkdocs-material source
-          ls -l
           git clone https://github.com/squidfunk/mkdocs-material.git
-          ls -l
           cp material_browser_request9_4p.patch mkdocs-material/
           cd mkdocs-material
 
           # Check if patch file exists
-          if [ ! -f "./material_browser_request9_4p.patch" ]; then
+          if [ ! -f "material_browser_request9_4p.patch" ]; then
             echo "Error: Patch file not found!"
             exit 1
           fi
 
           # Apply your patch file
           echo "Applying patch..."
-          if ! git apply ./material_browser_request9_4p; then
+          if ! git apply material_browser_request9_4p; then
             echo "Patch failed to apply cleanly. Trying with --reject..."
-            git apply --reject ./material_browser_request9_4p.patch || {
+            git apply --reject material_browser_request9_4p.patch || {
               echo "Error: Patch could not be applied. The mkdocs-material version might be incompatible."
               echo "Consider updating your patch file or pinning to a specific mkdocs-material version."
               exit 1
