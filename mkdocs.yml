@@ -71,6 +71,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Paramétrage: param_dg.md
 
 extra_javascript:
   - https://unpkg.com/lunr/lunr.js

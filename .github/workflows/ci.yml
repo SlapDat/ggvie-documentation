@@ -18,13 +18,52 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
       - uses: actions/cache@v3
         with:
           key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
+          path: |
+            .cache
+            ~/.npm
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material
+      - name: Download and patch mkdocs-material
+      - run: |
+          # Download the latest mkdocs-material source
+          git clone https://github.com/squidfunk/mkdocs-material.git
+          cd mkdocs-material
+
+          # Check if patch file exists
+          if [ ! -f "../material_browser_request9_4p.patch" ]; then
+            echo "Error: Patch file not found!"
+            exit 1
+          fi
+
+          # Apply your patch file
+          echo "Applying patch..."
+          if ! git apply ../material_browser_request9_4p; then
+            echo "Patch failed to apply cleanly. Trying with --reject..."
+            git apply --reject ../material_browser_request9_4p.patch || {
+              echo "Error: Patch could not be applied. The mkdocs-material version might be incompatible."
+              echo "Consider updating your patch file or pinning to a specific mkdocs-material version."
+              exit 1
+            }
+          fi
+
+          # Verify patch was applied successfully
+          echo "Patch applied successfully!"
+
+          # Install npm dependencies
+          npm install
+          
+          # Build the frontend assets
+          npm run build
+          
+          # Install the patched version
+          pip install -e .
+
       - run: pip install mkdocs-encryptcontent-plugin
       - run: mkdocs gh-deploy --force
