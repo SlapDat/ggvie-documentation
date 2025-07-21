@@ -1,5 +1,16 @@
 site_name: GGVIE Apidata Documentation
 site_url: https://slapdat.github.io/ggvie-documentation/
+
+plugins:
+  - search: {}
+  - encryptcontent:
+      webcrypto: true
+      search_index: 'dynamically'
+      remember_keys: true
+      # your password configuration
+      password_inventory:
+        confidential: 'your_password'
+  
 theme:
   name: material
   features:
@@ -50,10 +61,16 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.blocks.caption
 
-plugins:
-    - encryptcontent:
-        global_password: '0a03e293-f956-466d-9f70-ae265fc85b62'
-        search_index: 'dynamically'
+# plugins:
+#     - search:
+#             lang: en
+#     - encryptcontent:
+#         password_inventory:
+#           confidential: '0a03e293-f956-466d-9f70-ae265fc85b62'
+#         search_index: 'dynamically'
 
 nav:
   - Home: index.md
+
+extra_javascript:
+  - https://unpkg.com/lunr/lunr.js
