@@ -9,7 +9,12 @@ plugins:
       remember_keys: true
       # your password configuration
       password_inventory:
+        secret:
+          admin: 'your_password'
         confidential: 'your_password'
+      password_button: true
+      title_prefix: ''
+      password_button_text: 'ENTER'
   
 theme:
   name: material
@@ -60,14 +65,6 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.blocks.caption
-
-# plugins:
-#     - search:
-#             lang: en
-#     - encryptcontent:
-#         password_inventory:
-#           confidential: '0a03e293-f956-466d-9f70-ae265fc85b62'
-#         search_index: 'dynamically'
 
 nav:
   - Home: index.md

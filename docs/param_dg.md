@@ -1,5 +1,5 @@
 ---
-level: confidential
+level: secret
 ---
 
 # Paramétrage DG
@@ -28,16 +28,16 @@ Avant de commencer le paramétrage, il faudra posséder un fichier type de flux 
     
     Depuis le menu déroulant de gauche, cliquer sur `Paramétrage Flux` puis sur `Sources` pour arriver sur la liste des sources existantes.
 
-    ![Source Left menu](..\assets\param\prdg\source_access.png){ align=left }
+    ![Source Left menu](../assets/param/prdg/source_access.png){ align=left }
 
 === "Création Source"
 
     Depuis la nouvelle page, cliquer sur le bouton `Ajout` pour démarrer la procédure de création d'une nouvelle source.
 
-    ![Source Creation](..\assets\param\prdg\source_add.png){ align=left }
+    ![Source Creation](../assets/param/prdg/source_add.png){ align=left }
 
 === "Page Principale"
 
     Page principale de l'édition de la Source. Séparée en 2 segments `Edition d'une source` et `Paramétrage`.
 
-    ![Source Main](..\assets\param\prdg\source_main.png){ align=left }
+    ![Source Main](../assets/param/prdg/source_main.png){ align=left }
