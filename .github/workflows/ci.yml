@@ -25,6 +25,35 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material
+      - run: |
+          pip install mkdocs-material
+
+          npm install
+
+          # Check if patch file exists
+          if [ ! -f "../material_browser_request9_4p.patch" ]; then
+            echo "Error: Patch file not found!"
+            exit 1
+          fi
+
+          # Apply your patch file
+          echo "Applying patch..."
+          if ! git apply ../material_browser_request9_4p; then
+            echo "Patch failed to apply cleanly. Trying with --reject..."
+            git apply --reject ../material_browser_request9_4p.patch || {
+              echo "Error: Patch could not be applied. The mkdocs-material version might be incompatible."
+              echo "Consider updating your patch file or pinning to a specific mkdocs-material version."
+              exit 1
+            }
+          fi
+
+          # Verify patch was applied successfully
+          echo "Patch applied successfully!"
+
+          npm build
+          
+          # Install the patched version
+          pip install -e .
+
       - run: pip install mkdocs-encryptcontent-plugin
       - run: mkdocs gh-deploy --force
