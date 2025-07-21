@@ -31,7 +31,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - name: Download and patch mkdocs-material
-      - run: |
+        run: |
           # Download the latest mkdocs-material source
           git clone https://github.com/squidfunk/mkdocs-material.git
           cd mkdocs-material
