@@ -37,7 +37,7 @@ jobs:
           cp material_browser_request9_4p.patch mkdocs-material/
           cd mkdocs-material
 
-          ls- l
+          ls -l
 
           # Check if patch file exists
           if [ ! -f "material_browser_request9_4p.patch" ]; then
