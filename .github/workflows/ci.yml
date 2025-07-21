@@ -33,9 +33,11 @@ jobs:
       - name: Download and patch mkdocs-material
         run: |
           # Download the latest mkdocs-material source
-          git clone https://github.com/squidfunk/mkdocs-material.git
+          git clone https://github.com/squidfunk/mkdocs-material
           cp material_browser_request9_4p.patch mkdocs-material/
           cd mkdocs-material
+
+          ls- l
 
           # Check if patch file exists
           if [ ! -f "material_browser_request9_4p.patch" ]; then
