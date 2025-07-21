@@ -45,7 +45,7 @@ jobs:
 
           # Apply your patch file
           echo "Applying patch..."
-          if ! git apply material_browser_request9_4p; then
+          if ! git apply material_browser_request9_4p.patch; then
             echo "Patch failed to apply cleanly. Trying with --reject..."
             git apply --reject material_browser_request9_4p.patch || {
               echo "Error: Patch could not be applied. The mkdocs-material version might be incompatible."
