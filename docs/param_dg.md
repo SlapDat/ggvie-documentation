@@ -1,3 +1,7 @@
+---
+level: confidential
+---
+
 # Paramétrage DG
 
 ## Introduction
